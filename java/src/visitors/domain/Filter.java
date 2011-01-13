@@ -22,7 +22,7 @@ public class Filter implements Node {
 
   @Override
   public String toString() {
-    return "Filter<" + criteria + ">\n" + child;
+    return "Filter<" + criteria + ">";
   }
 
   public void acceptVisitor(Visitor v) {

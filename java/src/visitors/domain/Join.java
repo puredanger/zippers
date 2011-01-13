@@ -37,8 +37,7 @@ public class Join implements Node {
 
   @Override
   public String toString() {
-    return "Join <" + type.name() + " | " + criteria + ">\n" + left + ", "
-        + right;
+    return "Join <" + type.name() + " | " + criteria + ">";
   }
 
   public void acceptVisitor(Visitor v) {

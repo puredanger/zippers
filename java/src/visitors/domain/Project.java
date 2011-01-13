@@ -22,7 +22,7 @@ public class Project implements Node {
   }
   
   public String toString() {
-    return "Project<" + projections + ">\n" + child;
+    return "Project<" + projections + ">";
   }
   
   public void acceptVisitor(Visitor v) {

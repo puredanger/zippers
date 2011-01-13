@@ -18,7 +18,14 @@ public class Main {
 
   public static void main(String[] args) {
     Node tree = createTree();
-    System.out.println(tree);
+    
+    CollectAllVisitor collectAllVisitor = new CollectAllVisitor();
+    NavigationVisitor v = new NavigationVisitor(collectAllVisitor);
+    tree.acceptVisitor(v);
+    System.out.println("all:");
+    for(Object o : collectAllVisitor.getVisited()) {
+      System.out.println(o);
+    }
   }
   
   public static Node createTree() {
