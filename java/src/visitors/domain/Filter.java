@@ -20,7 +20,7 @@ public class Filter implements Node {
 
   @Override
   public String toString() {
-    return "Filter<" + criteria + ">";
+    return "Filter<" + criteria + ">\n" + child;
   }
   
   

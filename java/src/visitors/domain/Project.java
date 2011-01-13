@@ -20,6 +20,6 @@ public class Project implements Node {
   }
   
   public String toString() {
-    return "Project<" + projections + ">";
+    return "Project<" + projections + ">\n" + child;
   }
 }
