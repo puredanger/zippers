@@ -1,5 +1,7 @@
 package visitors.domain;
 
-public interface Node {
+import visitors.Visitor;
 
+public interface Node {
+  public void acceptVisitor(Visitor v);
 }

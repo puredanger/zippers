@@ -1,5 +1,7 @@
 package visitors.domain;
 
+import visitors.Visitor;
+
 public class CompareCriteria implements Criteria {
   private final Expression leftExpression;
   private final Expression rightExpression;
@@ -35,5 +37,9 @@ public class CompareCriteria implements Criteria {
   
   public String toString() {
     return leftExpression + opToString(operator) + rightExpression;  
+  }
+    
+  public void acceptVisitor(Visitor v) {
+    v.visit(this);
   }
 }

@@ -2,6 +2,8 @@ package visitors.domain;
 
 import java.util.List;
 
+import visitors.Visitor;
+
 public class Project implements Node {
   private final List<Expression> projections;
   private final Node child;
@@ -21,5 +23,9 @@ public class Project implements Node {
   
   public String toString() {
     return "Project<" + projections + ">\n" + child;
+  }
+  
+  public void acceptVisitor(Visitor v) {
+    v.visit(this);
   }
 }

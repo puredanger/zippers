@@ -1,13 +1,17 @@
 package visitors.domain;
 
+import visitors.Visitor;
+
 public class Join implements Node {
-	public enum Type { INNER, LEFT, RIGHT, FULL }
-	
+  public enum Type {
+    INNER, LEFT, RIGHT, FULL
+  }
+
   private final Type type;
   private final Criteria criteria;
   private final Node left;
   private final Node right;
-  
+
   public Join(Type type, Criteria criteria, Node left, Node right) {
     this.type = type;
     this.criteria = criteria;
@@ -26,15 +30,18 @@ public class Join implements Node {
   public Node getRight() {
     return right;
   }
-  
+
   public Criteria getCriteria() {
     return criteria;
   }
-  
+
   @Override
   public String toString() {
-    return "Join <" + type.name() + " | " + criteria + ">\n" + 
-      left + ", " + right;
+    return "Join <" + type.name() + " | " + criteria + ">\n" + left + ", "
+        + right;
   }
- 
+
+  public void acceptVisitor(Visitor v) {
+    v.visit(this);
+  }
 }

@@ -2,6 +2,8 @@ package visitors.domain;
 
 import java.util.List;
 
+import visitors.Visitor;
+
 public class Concat implements Expression {
   private final List<Expression> args;
   
@@ -20,5 +22,9 @@ public class Concat implements Expression {
       s.append(args.get(i).toString());
     }
     return s.toString();
+  }
+  
+  public void acceptVisitor(Visitor v) {
+    v.visit(this);
   }
 }

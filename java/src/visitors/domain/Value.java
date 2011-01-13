@@ -1,5 +1,7 @@
 package visitors.domain;
 
+import visitors.Visitor;
+
 public class Value<T> implements Expression {
   private final T value;
   
@@ -13,5 +15,9 @@ public class Value<T> implements Expression {
   
   public String toString() {
     return "" + this.value;
+  }
+  
+  public void acceptVisitor(Visitor v) {
+    v.visit(this);
   }
 }
