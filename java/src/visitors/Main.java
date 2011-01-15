@@ -19,13 +19,10 @@ public class Main {
   public static void main(String[] args) {
     Node tree = createTree();
     
-    CollectAllVisitor collectAllVisitor = new CollectAllVisitor();
-    NavigationVisitor v = new NavigationVisitor(collectAllVisitor);
+    CollectColumnsVisitor colVisitor = new CollectColumnsVisitor();
+    NavigationVisitor v = new NavigationVisitor(colVisitor);
     tree.acceptVisitor(v);
-    System.out.println("all:");
-    for(Object o : collectAllVisitor.getVisited()) {
-      System.out.println(o);
-    }
+    System.out.println("columns = " + colVisitor.getColumns());
   }
   
   public static Node createTree() {

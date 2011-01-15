@@ -13,11 +13,11 @@ import visitors.domain.Value;
 public class NavigationVisitor implements Visitor {
 
   private final Visitor visitor;
-  
+
   public NavigationVisitor(Visitor visitor) {
     this.visitor = visitor;
   }
-  
+
   @Override
   public void visit(Column c) {
     visitor.visit(c);
@@ -33,7 +33,7 @@ public class NavigationVisitor implements Visitor {
   @Override
   public void visit(Concat c) {
     visitor.visit(c);
-    for(Expression e : c.getArgs()) {
+    for (Expression e : c.getArgs()) {
       e.acceptVisitor(this);
     }
   }
@@ -56,6 +56,9 @@ public class NavigationVisitor implements Visitor {
   @Override
   public void visit(Project p) {
     visitor.visit(p);
+    for(Expression projection : p.getProjections()) {
+      projection.acceptVisitor(this);
+    }
     p.getChild().acceptVisitor(this);
   }
 
