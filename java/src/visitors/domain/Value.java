@@ -14,7 +14,7 @@ public class Value<T> implements Expression {
   }
   
   public String toString() {
-    return "" + this.value;
+    return "Value<" + this.value + ">";
   }
   
   public void acceptVisitor(Visitor v) {

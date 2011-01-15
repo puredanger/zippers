@@ -20,7 +20,7 @@ public class Column implements Expression {
   }
   
   public String toString() {
-    return table + "." + column;
+    return "Column<" + table + "." + column +">";
   }
   
   public void acceptVisitor(Visitor v) {

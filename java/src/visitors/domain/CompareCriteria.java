@@ -36,7 +36,7 @@ public class CompareCriteria implements Criteria {
   }
   
   public String toString() {
-    return leftExpression + opToString(operator) + rightExpression;  
+    return "Compare<" + leftExpression + opToString(operator) + rightExpression + ">";  
   }
     
   public void acceptVisitor(Visitor v) {

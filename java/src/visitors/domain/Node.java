@@ -1,7 +1,6 @@
 package visitors.domain;
 
-import visitors.Visitor;
+import visitors.Visitable;
 
-public interface Node {
-  public void acceptVisitor(Visitor v);
+public interface Node extends Visitable {
 }

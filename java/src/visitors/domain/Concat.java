@@ -16,11 +16,13 @@ public class Concat implements Expression {
   }
   
   public String toString() {
-    StringBuilder s = new StringBuilder(args.get(0).toString());
+    StringBuilder s = new StringBuilder("Concat<");
+    s.append(args.get(0).toString());
     for(int i=1; i<args.size(); i++) {
       s.append(" || ");
       s.append(args.get(i).toString());
     }
+    s.append(">");
     return s.toString();
   }
   
