@@ -101,15 +101,8 @@
 ;; - carry state through iteration
 ;; - pre/post iteration
 
-(defn new-context []
-  {:state nil
-   :node nil
-   :stop true
-   :next true})
-
-(comment
-  (defn visitor [node state]
-    context))
+;; context = :state, :node :stop :next
+;; visitor fn = (fn [node state]) -> context map
 
 (defn visit-node 
   [start-node start-state visitors]
@@ -128,9 +121,9 @@
 (defn tree-visitor
   ([zipper visitors]
      (tree-visitor zipper nil visitors))
-  ([zipper initial-value visitors]
+  ([zipper initial-state visitors]
      (loop [loc zipper
-            state initial-value]
+            state initial-state]
        (let [context (visit-node (zip/node loc) state visitors)
              new-node (:node context)
              new-state (:state context)
@@ -181,7 +174,7 @@
   (:state
    (tree-visitor (tree-zipper node) [(partial matched type)])))
 
-;; stacked
+;; multiple visitors in small pieces
 
 (defn on [type]
   (fn [node state]
@@ -203,7 +196,7 @@
 (defn node-eval [node state]
   {:node (eval-expr node)})
 
-(defn stacked-example [node]
+(defn chained-example [node]
   (:node
    (tree-visitor (tree-zipper node)
                  [(on :concat)
